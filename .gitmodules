@@ -1,0 +1,3 @@
+[submodule "mkr-authority"]
+	path = mkr-authority
+	url = https://github.com/makerdao/mkr-authority/

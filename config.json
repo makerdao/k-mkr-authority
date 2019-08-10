@@ -1,0 +1,20 @@
+{
+  "name": "k-mkr-authority",
+  "src": {
+    "specification": "src/specs.md",
+    "smt_prelude": "src/prelude.smt2.md",
+    "rules": [
+      "src/storage.k.md",
+      "src/lemmas.k.md"
+    ],
+    "dirty_rules": [
+      "./src/dirty_lemmas.k.md"
+    ]
+  },
+  "implementations": {
+    "MkrAuthority": {
+      "src": "src/MkrAuthority.sol"
+    }
+  },
+  "dapp_root": "mkr-authority"
+}

@@ -27,5 +27,19 @@ iff
   VCallValue == 0
   CALLER_ID == Root
 ```
-  0 |-> #WordPackAddr(Root) => #WordPackAddr(usr)
-  0 |-> #WordPackAddr(Root, Y) => #WordPackAddr(usr, Y)
+
+```act
+behaviour rely of MkrAuthority
+interface rely(address usr)
+
+types
+  Root : address
+
+storage
+  0 |-> Root
+  wards[usr] |-> _ => 1
+
+iff
+  VCallValue == 0
+  CALLER_ID == Root
+```

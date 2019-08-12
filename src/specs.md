@@ -43,3 +43,19 @@ iff
   VCallValue == 0
   CALLER_ID == Root
 ```
+
+```act
+behaviour deny of MkrAuthority
+interface deny(address usr)
+
+types
+  Root : address
+
+storage
+  0 |-> Root
+  wards[usr] |-> _ => 0
+
+iff
+  VCallValue == 0
+  CALLER_ID == Root
+```

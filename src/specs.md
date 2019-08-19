@@ -59,3 +59,43 @@ iff
   VCallValue == 0
   CALLER_ID == Root
 ```
+
+```act
+behaviour canCall-true of MkrAuthority
+interface canCall(address src, address dst, bytes4 sig)
+
+types
+  May : uint256
+
+storage
+  wards[src] |-> May
+
+iff
+  VCallValue == 0
+
+if
+  sig == #asWord(#padRightToWidth(32, #take(4, #abiCallData("burn", #address(0), #uint256(0))))) or (sig == #asWord(#padRightToWidth(32, #take(4, #abiCallData("mint", #address(0), #uint256(0))))) and May == 1)
+
+returns 1
+```
+
+```act
+behaviour canCall-false of MkrAuthority
+interface canCall(address src, address dst, bytes4 sig)
+
+types
+  May : uint256
+
+storage
+  wards[src] |-> May
+
+iff
+  VCallValue == 0
+
+if
+  sig =/= #asWord(#padRightToWidth(32, #take(4, #abiCallData("burn", #address(0), #uint256(0))))) 
+  sig =/= #asWord(#padRightToWidth(32, #take(4, #abiCallData("mint", #address(0), #uint256(0))))) or May =/= 1
+  sig <= 115792089210356248756420345214020892766250353992003419616917011526809519390720 
+
+returns 0
+```

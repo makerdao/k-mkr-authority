@@ -6,7 +6,7 @@ specs: dapp
 dapp:
 	git submodule sync --recursive
 	git submodule update --init --recursive
-	cd mkr-authority && dapp build
+	cd mkr-authority && dapp --use solc:0.5.12 build && cd ../
 
 .PHONY: clean
 clean:

@@ -14,6 +14,41 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ```act
+behaviour wards of MkrAuthority
+interface wards(address usr)
+
+for all
+
+  May : uint256
+
+storage
+
+  wards[usr] |-> May
+
+iff
+
+  VCallValue == 0
+
+returns May
+```
+
+```act
+behaviour root of MkrAuthority
+interface root()
+
+types
+  Root : address
+
+storage
+  root |-> Root
+
+iff
+  VCallValue == 0
+
+returns Root
+```
+
+```act
 behaviour setRoot of MkrAuthority
 interface setRoot(address usr)
 

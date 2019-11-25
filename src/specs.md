@@ -17,16 +17,13 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 behaviour wards of MkrAuthority
 interface wards(address usr)
 
-for all
-
+types
   May : uint256
 
 storage
-
   wards[usr] |-> May
 
 iff
-
   VCallValue == 0
 
 returns May
@@ -56,7 +53,7 @@ types
   Root : address
 
 storage
-  0 |-> Root => usr
+  root |-> Root => usr
 
 iff
   VCallValue == 0
@@ -71,7 +68,7 @@ types
   Root : address
 
 storage
-  0 |-> Root
+  root |-> Root
   wards[usr] |-> _ => 1
 
 iff
@@ -87,7 +84,7 @@ types
   Root : address
 
 storage
-  0 |-> Root
+  root |-> Root
   wards[usr] |-> _ => 0
 
 iff
@@ -104,7 +101,7 @@ types
   May : uint256
 
 storage
-  0 |-> Root
+  root |-> Root
   wards[src] |-> May
 
 iff
@@ -127,7 +124,7 @@ types
   May : uint256
 
 storage
-  0 |-> Root
+  root |-> Root
   wards[src] |-> May
 
 iff

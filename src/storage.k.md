@@ -14,6 +14,9 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ```k
+syntax Int ::= "#MkrAuthority.root" [function]
+rule #MkrAuthority.root => 0
+
 syntax Int ::= "#MkrAuthority.wards" "[" Int "]" [function]
 rule #MkrAuthority.wards[A] => #hashedLocation("Solidity", 1, A)
 ```

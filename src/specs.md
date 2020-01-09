@@ -108,7 +108,7 @@ iff
   VCallValue == 0
 
 if
-  (src == Root) or (sig == #asWord(#padRightToWidth(32, #take(4, #abiCallData("burn", #address(0), #uint256(0)))))) or (sig == #asWord(#padRightToWidth(32, #take(4, #abiCallData("mint", #address(0), #uint256(0))))) and May == 1)
+  (src == Root) or (sig == #asWord(#padRightToWidth(32, #take(4, #abiCallData("burn", #address(0), #uint256(0))))) or sig == #asWord(#padRightToWidth(32, #take(4, #abiCallData("burn", #uint256(0)))))) or (sig == #asWord(#padRightToWidth(32, #take(4, #abiCallData("mint", #address(0), #uint256(0))))) and May == 1)
   sig <= 115792089210356248756420345214020892766250353992003419616917011526809519390720 
   sig >= 0
 
@@ -132,7 +132,8 @@ iff
 
 if
   src =/= Root
-  sig =/= #asWord(#padRightToWidth(32, #take(4, #abiCallData("burn", #address(0), #uint256(0))))) 
+  sig =/= #asWord(#padRightToWidth(32, #take(4, #abiCallData("burn", #address(0), #uint256(0)))))
+  sig =/= #asWord(#padRightToWidth(32, #take(4, #abiCallData("burn", #uint256(0)))))
   sig =/= #asWord(#padRightToWidth(32, #take(4, #abiCallData("mint", #address(0), #uint256(0))))) or May =/= 1
   sig <= 115792089210356248756420345214020892766250353992003419616917011526809519390720 
   sig >= 0

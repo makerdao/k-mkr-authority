@@ -13,7 +13,7 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-# Rule for setRoot proof (magic nubmer is bitwise not of 2^160).
+# Rule for setRoot proof (magic nubmer is bitwise not of 2^160 - 1).
 ```k
 rule 115792089237316195423570985007226406215939081747436879206741300988257197096960 &Int X => 0
   requires #rangeAddress(X)
